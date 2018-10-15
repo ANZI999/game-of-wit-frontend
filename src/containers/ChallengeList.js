@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { stateStore } from '../StateStore';
+import { backendAPI } from '../BackendAPI';
 
-import ChallengeElement from '../components/ChallengeElement';
+import ChallengeListElement from '../components/ChallengeListElement';
 
-class ChallengeList extends Component {
+export default class ChallengeList extends Component {
     
     constructor(props) {
         super(props);
@@ -11,11 +11,10 @@ class ChallengeList extends Component {
     }
     
     componentDidMount() {  
-        stateStore.getChallenges((retrievedChallenges)=> {
+        backendAPI.getChallenges((retrievedChallenges) => {
             this.setState({ challenges: retrievedChallenges });
         });
     }
-    
     
     render() {
         return (
@@ -23,7 +22,7 @@ class ChallengeList extends Component {
                 <table>
                     <tbody>
                         {this.state.challenges.map((challenge) => {
-                            return <ChallengeElement key={challenge.id} challenge={challenge} />;
+                            return <ChallengeListElement key={challenge.id} challenge={challenge} />;
                         })}                 
                     </tbody>
                 </table>
@@ -31,5 +30,3 @@ class ChallengeList extends Component {
         );
     }
 }
-
-export default ChallengeList;
