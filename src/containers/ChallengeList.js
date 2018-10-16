@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { backendAPI } from '../BackendAPI';
+import { Link } from 'react-router-dom';
 
 import ChallengeListElement from '../components/ChallengeListElement';
 
@@ -19,6 +20,7 @@ export default class ChallengeList extends Component {
     render() {
         return (
             <div>
+                <Link to="/challenge/create">New challenge</Link>
                 <table>
                     <tbody>
                         {this.state.challenges.map((challenge) => {

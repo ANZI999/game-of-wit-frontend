@@ -10,7 +10,6 @@ export default class ChallengeView extends Component {
     
     componentDidMount() {  
         backendAPI.getChallenge(this.props.match.params.id, (retrievedChallenge) => {
-            console.log(retrievedChallenge);
             this.setState({ challenge: retrievedChallenge });
         });
     }
